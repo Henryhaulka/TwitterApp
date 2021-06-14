@@ -1,4 +1,6 @@
- require 'em/pure_ruby'
+# frozen_string_literal: true
+
+require 'em/pure_ruby'
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
@@ -27,11 +29,11 @@ guard 'livereload' do
     png: :png,
     gif: :gif,
     jpg: :jpg,
-    jpeg: :jpeg,
+    jpeg: :jpeg
     # less: :less, # uncomment if you want LESS stylesheets done in browser
   }
 
-  rails_view_exts = %w(erb haml slim)
+  rails_view_exts = %w[erb haml slim]
 
   # file types LiveReload may optimize refresh for
   compiled_exts = extensions.values.uniq
