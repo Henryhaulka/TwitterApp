@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TweeetsController < ApplicationController
   before_action :set_tweeet, only: %i[show edit update destroy]
 
