@@ -13,3 +13,17 @@
  *= require_self
  */
 @import "bulma";
+
+.navbar-brand .title {
+    color: white;
+    padding-left: 10px;
+
+}
+
+//round images
+.images {
+    border-radius: 50%;
+    img {
+      border-radius: 50%;
+    }
+}
