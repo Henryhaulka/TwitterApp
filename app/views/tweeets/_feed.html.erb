@@ -1,22 +1,35 @@
-<div class="col-md-7">
+<div class="col-md-8 pl-0 pr-0" >
 <div class="media border">
-  <img src="https://bulma.io/images/placeholders/64x64.png" class="align-self-start mr-3 my-auto ml-2" alt="...">
+  <img src="https://bulma.io/images/placeholders/64x64.png" class="p-2" alt="...">
   <div class="media-body">
-    <h5 class="mt-2">Top-aligned media</h5>
-    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <h4 class="mt-2 ml-3">Tweet about here</h4>
+    <%= render 'tweeets/form' %>
   </div>
-</div>
-</div>
+</div><br>
 
-<% @tweeets.each do |tweeet| %>
-<div class="col-md-4">
+
+<% @tweeets.each do |twit| %>
+<div class=" pl-0 pr-0">
     <div class="media border">
         <img src="https://bulma.io/images/placeholders/64x64.png" class="align-self-start mr-3 my-auto p-2 ml-2" alt="...">
         <div class="media-body">
             <strong>Tupac Shakur</strong><br>
             <small>@shakur</small>
-            <p><%= tweeet.tweet %></p>
+            <p><strong>tweet: </strong><%= twit.tweet %></p>
+
+             <%= link_to twit do%>
+              <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
+              <% end %>
+             <%= link_to edit_tweeet_path(twit) do %>
+               <i class="fa fa-pencil-square-o text-dark" aria-hidden="true"></i>
+             <% end %>
+          
+            <%= link_to twit, method: :delete, data: { confirm: 'Are you sure you want to delete this tweet?'} do %>
+                 <i class="fa fa-trash-o text-dark ml-3" aria-hidden="true"></i>
+            <% end %>
         </div>
   </div>
 </div>
+           
 <% end %>
+</div>
