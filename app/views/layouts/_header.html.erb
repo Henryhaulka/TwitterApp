@@ -15,10 +15,24 @@
         <%= link_to 'New Tweet', new_tweeet_path, class: " btn btn-light text-info p-1 mb-1" %>
       </li>
       
-      
+      <% if user_signed_in? %>
       <li class="nav-item">
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: " btn btn-dark ml-md-2 mr-md-2 p-1 mb-1" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: " btn btn-danger ml-md-2 mr-md-2 p-1 mb-1" %>
       </li>
+      <li class="nav-item ">
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: " btn text-white p-1 mb-1 mr-2" %>
+      </li>
+      <% else %>
+       <li class="nav-item ">
+        <%= link_to 'Sign in',new_user_session_path, class: " btn text-white p-1 mb-1 mr-2 ml-2" %>
+      </li>
+      <li class="nav-item ">
+        <%= link_to 'Sign Up',  new_user_registration_path, class: " btn text-white p-1 mb-1 mr-2" %>
+      </li>
+      <% end %>
+     
+
+      
     </ul>
     <form class="form-inline  my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
