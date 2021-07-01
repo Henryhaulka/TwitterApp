@@ -1,7 +1,11 @@
 <section class="container">
 <div class="row mt-3">
-<%= render 'tweeets/trend' %>
-   <%= render 'tweeets/feed'%>
+  <% if user_signed_in? %>
+   <%= render 'tweeets/profile' %>
+  <% else%>
+  <%= render 'tweeets/trend' %>
+  <% end %>
+  <%= render 'tweeets/feed'%>
   <%= render 'tweeets/who_to' %>
 </div>
 
