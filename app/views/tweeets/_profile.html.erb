@@ -1,0 +1,34 @@
+<div class="col-md-3 mt-3">
+<div class="card" >
+  <h4 class="card-header">
+  <strong>Profile</strong>  
+  </h4>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item phona d-flex ">
+    <div>
+      <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+      </div>
+      <div class=" ml-5 ">
+          <p class="pt-2"><strong ><%= current_user.name%></strong></p>
+          <p><%= current_user.username%></p>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+    <div>
+       Tweets<br>
+       <strong><%= current_user.tweeets.count %></strong>
+    </div>
+    <div>
+        Following</br>
+        <strong> 11k</strong> 
+     </div>
+    <div>
+        Followers</br>
+       <strong>1k</strong> 
+    </div>
+      
+    </li>
+
+  </ul>
+</div>
+</div>
