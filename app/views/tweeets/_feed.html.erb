@@ -1,7 +1,10 @@
 <div class="col-md-6 pt-3">
   <% if user_signed_in? %>
       <div class="media border">
-        <img src="https://bulma.io/images/placeholders/64x64.png" class="p-2" alt="...">
+      <div class="p-3">
+        <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+        
+      </div>
         <div class="media-body">
           <h5 class="mt-2 ml-3">Tweet about here</h5>
           <%= render 'tweeets/form' %>
@@ -13,8 +16,8 @@
   <% @tweeets.each do |twit| %>
       <div class="  pt-3">
         <div class="media border">
-          <img src="https://bulma.io/images/placeholders/64x64.png" class="align-self-start mr-3 my-auto p-2 ml-2" alt="...">
-          <div class="media-body">
+          <div class="p-3"><%= gravatar_image_tag(twit.user.email, size: 64, alt: twit.user.name) %></div>
+          <div class="media-body pt-3">
             <strong><%= twit.user.name%></strong><br>
             <small><%= twit.user.email%></small>
             <p><strong>tweet: </strong><%= twit.tweet %></p>
