@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 gem 'simple_form', '~> 5.1'
 gem 'devise', '~> 4.8'
+gem 'gravatar_image_tag', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
