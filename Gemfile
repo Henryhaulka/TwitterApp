@@ -27,7 +27,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
-gem 'gravatar_image_tag', '~> 1.2'
+gem 'paperclip', '~> 6.0.0'
+gem 'paperclip-cloudinary'
 gem 'simple_form', '~> 5.1'
 
 group :development, :test do
@@ -51,7 +52,7 @@ group :development do
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'guard-bundler'
   gem 'rack-mini-profiler', '~> 2.0'
-
+  gem 'hirb', '~> 0.7.3'
   gem 'guard-livereload', '~> 2.5', require: false
 end
 
