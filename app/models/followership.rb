@@ -1,0 +1,2 @@
+class Followership < ApplicationRecord
+end

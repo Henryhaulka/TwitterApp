@@ -17,7 +17,18 @@
 
 .phona {
   img {
-    width: 80px;
-    border-radius: 50%;
+    width: 5em;
+    border-radius: 10%;
   }
+}
+
+.profile_avatar {
+    height: 5rem;
+    width: 2rem;
+}
+
+.show_image {
+  width: 30rem;
+  border-radius: 2rem;
+  margin: auto;
 }
