@@ -1,5 +1,5 @@
-<div class= 'w-50 mx-auto'>
-    <p  class= "display-4"><%= @user.name.capitalize%></p>
-    <p><%= @user.username%></p>
-    <%= image_tag("#{@user.avatar}")%>
+<div class= 'w-50 mx-auto mt-5'>
+    <%= image_tag("#{@user.avatar}",class: 'show_image')%><br>
+     <p  class= "display-5"><strong>Name:</strong> <%= @user.name.capitalize%></p>
+    <p> <strong>Username:</strong> <%= @user.username%></p>
 </div>
