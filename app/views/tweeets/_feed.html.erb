@@ -47,15 +47,19 @@
           <div class="media border">
             <div class="p-3"></div>
             <div class="media-body pt-3">
-                <div class = 'd-flex'>
-                  <%= image_tag("#{twit.user.avatar}", class:'feed_image')%>
-                  <div class="d-flex flex-column ml-3">
-                    <strong class = '100'><%= twit.user.try(:name)%></strong>
-                    <small>@<%= twit.user.try(:username)%></small>
+                <%= link_to twit.user,  class:'text-dark text-decoration-none' do%>
+                  <div class = 'd-flex'>
+                    <%= image_tag("#{twit.user.avatar}", class:'feed_image')%>
+                    <div class="d-flex flex-column ml-3">
+                      <strong class = '100'><%= twit.user.try(:name)%></strong>
+                      <small>@<%= twit.user.try(:username)%></small>
+                    </div>
                   </div>
-                </div>
-    
-              <p class= 'pt-2'><strong>tweet: </strong><%= twit.tweet %> <span class= 'time_ago'><%= time_ago_in_words(twit.created_at)%> ago</span></p>
+                <%end%>
+                    <%= link_to twit,  class:'text-dark text-decoration-none' do%>
+                                   <p class= 'pt-2'><strong>tweet: </strong><%= twit.tweet %> <span class= 'time_ago'><%= time_ago_in_words(twit.created_at)%> ago</span></p>
+                    <% end %>
+
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
                       <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
@@ -79,6 +83,7 @@
                         <div class="media border mt-3 pb-2">
                             <div class="p-3"></div>
                              <div class="media-body p-3">
+                             <%= link_to e.user,  class:'text-dark text-decoration-none' do%>
                                 <div class = 'd-flex pb-3'>
                                       <%= image_tag("#{e.user.avatar}", class:'feed_image')%>
                                     <div class="d-flex flex-column ml-3">
@@ -87,7 +92,11 @@
                                         
                                     </div>
                                   </div>
-                                    <strong>tweet: </strong> <%=e.tweet %> <span class= 'time_ago'><%= time_ago_in_words(e.created_at)%> ago</span>
+                              <%end%>
+                                    <%= link_to e, class:'text-dark text-decoration-none'  do%>
+                                          <strong>tweet: </strong> <%=e.tweet %> <span class= 'time_ago'><%= time_ago_in_words(e.created_at)%> ago</span>
+                                      <% end %>
+                                    
                               </div>
                           </div>
                       <%end%>

@@ -11,13 +11,15 @@
     <% @users.each do |e| %>
       <ul class="list-group list-group-flush who mb-3">
         <%if current_user != e%>
+         <%= link_to e,  class:'text-dark text-decoration-none' do%>
             <div class = 'd-flex'>
-              <div class='mt-3'><%= link_to( image_tag("#{e.avatar}", class:'list_image'),e)%></div>
+              <div class='mt-3'><%=  image_tag("#{e.avatar}", class:'list_image')%></div>
                   <div class = 'ml-4'>
                         <p class="mt-2 pr-0 mr-0 font-weight-bold"><%= e.name%></p>
                         <p class= " pt-0 mr-4">@<%= e.username%></p>
                   </div>
              </div>
+             <%end%>
              <%if user_signed_in?%>
                 <% if  current_user.followings.find_by(receiver_id: e.id).present?%>
                 <div class= 'mb-3'>
