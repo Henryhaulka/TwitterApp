@@ -10,5 +10,5 @@ class User < ApplicationRecord
                             path: ':id/:style/:filename',
                             styles: { medium: '300x300>' },
                             default_url: 'avatar.png'
-  validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\z}
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage/.*\z}  
 end

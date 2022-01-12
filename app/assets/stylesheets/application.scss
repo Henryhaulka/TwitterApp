@@ -28,7 +28,23 @@
 }
 
 .show_image {
-  width: 30rem;
-  border-radius: 2rem;
+  width: 200px;
+  height: 200px;
+  border-radius: 1rem;
   margin: auto;
+}
+
+.list_image {
+  height: 3rem;
+  border-radius: 1rem;
+}
+
+.feed_image {
+  height: 50px;
+  width: 50px;
+  border-radius: 1rem;
+}
+
+.who:not(:first-child) {
+  border-bottom: 0.5px solid grey;
 }
