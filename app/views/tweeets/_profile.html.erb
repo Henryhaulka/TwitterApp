@@ -21,11 +21,12 @@
           <strong><%= current_user.tweeets.count %></strong>
         </div>
         <div>
-            Following</br>
+           <%= link_to('Following', followerships_path, class: 'text-decoration-none text-dark')%></br>
             <strong><%= current_user.followings.count%></strong> 
         </div>
         <div>
-            Followers</br>
+        <%= link_to('Followers', followerships_path, class: 'text-decoration-none text-dark')%>
+            </br>
          <strong><%= current_user.followers.count%></strong> 
         </div>
           

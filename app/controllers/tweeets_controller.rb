@@ -1,6 +1,6 @@
 class TweeetsController < ApplicationController
   before_action :set_tweeet, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :allow_access, only: %i[edit update destroy]
   # GET /tweeets or /tweeets.json
   def index

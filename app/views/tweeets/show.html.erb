@@ -1,8 +1,10 @@
-<p>
-  <strong>Tweet:</strong>
-  <%= @tweeet.tweet %>
-</p>
+<div class="mx-auto w-50 mt-4">
+    <p>
+      <strong>Tweet:</strong>
+      <%= @tweeet.tweet %>
+    </p>
 
-<%= link_to 'Edit', edit_tweeet_path(@tweeet) %> |
-<%= link_to 'Back', tweeets_path %>
-<%= link_to 'Delete', @tweeet, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+    <%= link_to 'Edit', edit_tweeet_path(@tweeet) %> |
+    <%= link_to 'Back', tweeets_path %>
+    <%= link_to 'Delete', @tweeet, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+</div>

@@ -45,6 +45,12 @@
   border-radius: 1rem;
 }
 
-.who:not(:first-child) {
+.who:not(:first-child),
+.bbm {
   border-bottom: 0.5px solid grey;
+}
+
+.time_ago {
+  font-size: x-small;
+  color: grey
 }
