@@ -1,5 +1,23 @@
-<div class= 'w-50 mx-auto mt-5'>
-    <%= image_tag("#{@user.avatar}",class: 'show_image')%><br>
+<div class= 'w-50 mx-auto mt-5 text-center'>
+    <div><%= image_tag("#{@user.avatar}",class: 'show_image')%></div><br>
      <p  class= "display-5"><strong>Name:</strong> <%= @user.name.capitalize%></p>
     <p> <strong>Username:</strong> <%= @user.username%></p>
+    
+    <%if  current_user.followings.where(receiver_id: @user.id).present? %>
+       <%=link_to('Unfollow',followership_path(user: @user), method: :delete, data: { confirm: "Are you sure you want to unfollow #{@user.name}"}, class: 'btn btn-danger w-50' )%>
+    <%elsif current_user == @user%>
+       <div class='btn btn-success w-50'>Current User</div>
+    <%else%>
+        <%=link_to('Follow',followerships_path(user: @user), method: :post, class: 'btn btn-primary w-100' )%>
+    <%end%>
+<div class= 'mt-4'>
+   
+   <% if @user.tweeets.present? %>
+       <h4><%= @user.name%>'s Tweets</h4>
+            <% @user.tweeets.each do |tweet|%>
+              <%= tweet.tweet%>
+            <%end%>
+   <% end %>
+   
+</div>
 </div>
