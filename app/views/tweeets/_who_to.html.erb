@@ -1,21 +1,37 @@
 <div class="col-md-3 mt-3 ">
 <div class="card" >
   <div class="card-header p-2">
+    <%if user_signed_in?%>
     <strong>Who to Follow</strong> 
+    <%else%>
+      <strong>All Users</strong>
+    <%end%>
   </div>
-  <ul class="list-group list-group-flush">
-  
-    <li class="list-group-item p-1">
-    <div class= "d-flex phone justify-content-around">
-      <p class="mt-2 pr-0 mr-0 font-weight-bold">Smith John<br>
-      </div>
-       <p class= "float-right pt-0 mr-4">@smithjohn</p>
-    </li>
-    <li class="list-group-item p-1">
-    <div class= "d-flex phone justify-content-around">
-      <p class="mt-2 pr-0 mr-0 font-weight-bold">Smith John<br>
-      </div>
-       <p class= "float-right pt-0 mr-4">@smithjohn</p>
-    </li>
-  </ul>
+  <div class = 'w-75 mx-auto'>
+    <% @users.each do |e| %>
+      <ul class="list-group list-group-flush who mb-3">
+        <%if current_user != e%>
+            <div class = 'd-flex'>
+              <div class='mt-3'><%= link_to( image_tag("#{e.avatar}", class:'list_image'),e)%></div>
+                  <div class = 'ml-4'>
+                        <p class="mt-2 pr-0 mr-0 font-weight-bold"><%= e.name%></p>
+                        <p class= " pt-0 mr-4">@<%= e.username%></p>
+                  </div>
+             </div>
+             <%if user_signed_in?%>
+                <% if  current_user.followings.find_by(receiver_id: e.id).present?%>
+                <div class= 'mb-3'>
+                  <%=link_to('Following', e ,  class:'btn btn-success w-100')%>
+                  </div>
+                <%else%>
+                  <div class= 'mb-3'>
+                    <%=link_to('Follow',followerships_path(user: e), method: :post, class: 'btn btn-primary w-100' )%>
+                  </div>
+                <%end%>
+             <%end%>
+        <%end%>
+      </ul>
+    <%end%>
+  </div>
+
 </div>
