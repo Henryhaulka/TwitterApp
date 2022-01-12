@@ -55,7 +55,7 @@
                   </div>
                 </div>
     
-              <p><strong>tweet: </strong><%= twit.tweet %></p>
+              <p class= 'pt-2'><strong>tweet: </strong><%= twit.tweet %> <span class= 'time_ago'><%= time_ago_in_words(twit.created_at)%> ago</span></p>
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
                       <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
@@ -87,7 +87,7 @@
                                         
                                     </div>
                                   </div>
-                                    <strong>tweet: </strong> <%=e.tweet %>
+                                    <strong>tweet: </strong> <%=e.tweet %> <span class= 'time_ago'><%= time_ago_in_words(e.created_at)%> ago</span>
                               </div>
                           </div>
                       <%end%>
