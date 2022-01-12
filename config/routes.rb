@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :followerships
+  resources :followerships, only: [:create, :destroy]
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :tweeets
   resources :users
