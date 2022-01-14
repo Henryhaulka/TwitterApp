@@ -15,7 +15,12 @@
    <% if @user.tweeets.present? && current_user.followings.where(receiver_id: @user).present? || @user == current_user %>
        <h4><%= @user.name%>'s Tweets</h4>
             <% @user.tweeets.each do |tweet|%>
-              <%= tweet.tweet%>
+              <div class = 'd-flex'>
+                <div>
+                   <%= image_tag("#{tweet.image}", class: 'feed_image')%>
+                </div>
+                 <p class = 'mt-3 ml-4'><%= tweet.tweet%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(tweet.created_at)%> ago</span></p></p>
+              </div>
             <%end%>
    <% end %>
    

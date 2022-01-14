@@ -10,37 +10,7 @@
 
 
   <% if !user_signed_in?%>
-    <% @tweeets.each do |twit| %>
-        <div class="  pt-3">
-          <div class="media border">
-            <div class="p-3"></div>
-            <div class="media-body pt-3">
-                <div class = 'd-flex'>
-                  <%= image_tag("#{twit.user.avatar}", class:'feed_image')%>
-                  <div class="d-flex flex-column ml-3">
-                    <strong class = '100'><%= twit.user.try(:name)%></strong>
-                    <small>@<%= twit.user.try(:username)%></small>
-                  </div>
-                </div>
     
-              <p><strong>tweet: </strong><%= twit.tweet %></p>
-              <% if twit.user == current_user %>
-               <%= link_to twit do%>
-                <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
-                <% end %>
-                <i class="fas fa-table-tennis"></i>
-               <%= link_to edit_tweeet_path(twit) do %>
-                 <i class="fa fa-pencil-square-o text-dark" aria-hidden="true"></i>
-              <% end %>
-    
-              <%= link_to twit, method: :delete, data: { confirm: 'Are you sure you want to delete this tweet?'} do %>
-                   <i class="fa fa-trash-o text-dark ml-3" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
     <%else%>
      <% @users_tweet.each do |twit|%>
           <div class="  pt-3">
@@ -56,9 +26,13 @@
                     </div>
                   </div>
                 <%end%>
-                    <%= link_to twit,  class:'text-dark text-decoration-none' do%>
-                                   <p class= 'pt-2'><strong>tweet: </strong><%= twit.tweet %> <span class= 'time_ago'><%= time_ago_in_words(twit.created_at)%> ago</span></p>
-                    <% end %>
+                    <div>
+                      <%= link_to twit,  class:'text-dark text-decoration-none' do%>
+                                 <span class= 'time_ago ml-5'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(twit.created_at)%> ago</span></p>
+                                     <p class= 'pt-2'><%= twit.tweet %> 
+                                     <%= image_tag("#{twit.image}", class: 'tweet_image')%>
+                      <% end %>
+                    </div><br>
 
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
@@ -94,7 +68,9 @@
                                   </div>
                               <%end%>
                                     <%= link_to e, class:'text-dark text-decoration-none'  do%>
-                                          <strong>tweet: </strong> <%=e.tweet %> <span class= 'time_ago'><%= time_ago_in_words(e.created_at)%> ago</span>
+                                       <span class= 'time_ago'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;<%= time_ago_in_words(e.created_at)%> ago</span><br>
+                                           <%=e.tweet %> 
+                                            <div><%= image_tag("#{e.image}", class: 'tweet_image')%></div>
                                       <% end %>
                                     
                               </div>

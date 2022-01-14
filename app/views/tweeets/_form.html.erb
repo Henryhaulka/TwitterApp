@@ -15,6 +15,11 @@
     <%= form.text_area :tweet, class: 'form-control', placeholder: 'Compose a Tweet', rows:8, autofocus: true %>
   </div>
 
+    <div>
+      <%= form.label :image %>
+      <%= form.file_field :image, as: :file , class:"form-control"%>
+  </div><br>
+
   <div class="actions ">
     <%= form.submit class: "btn btn-primary"  %>
   </div>
