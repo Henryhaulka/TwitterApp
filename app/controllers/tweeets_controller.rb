@@ -6,11 +6,10 @@ class TweeetsController < ApplicationController
   def index
     @tweeet = Tweeet.new
     @users = User.all
-    if user_signed_in?
-        @users_tweet = current_user.tweeets.order(created_at: :desc)
-        @following_tweet = Followership.where(sender_id: current_user.id).order(created_at: :desc)
-    end
    
+    @users_tweet = current_user.tweeets.order(created_at: :desc)
+    @following_tweet = Followership.where(sender_id: current_user.id).order(created_at: :desc)
+    @liked = Like.find_by(user_id: current_user.id)
     # @follow = current_user.followings.find_by(receiver_id: e.id)
 
   end

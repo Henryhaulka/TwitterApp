@@ -8,7 +8,6 @@
       </div>
   <%end%>
 
-
   <% if !user_signed_in?%>
     
     <%else%>
@@ -23,17 +22,29 @@
                     <div class="d-flex flex-column ml-3">
                       <strong class = '100'><%= twit.user.try(:name)%></strong>
                       <small>@<%= twit.user.try(:username)%></small>
+                     
                     </div>
                   </div>
                 <%end%>
                     <div>
                       <%= link_to twit,  class:'text-dark text-decoration-none' do%>
                                  <span class= 'time_ago ml-5'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(twit.created_at)%> ago</span></p>
-                                     <p><%= twit.tweet %> </p>
+                                     <p><%= truncate(twit.tweet, length: 300, seperator: " ")%> </p>
                                      <%= image_tag("#{twit.image}", class: 'tweet_image')%>
                       <% end %>
                     </div><br>
+                    <p> <%= twit.likes.count %> &bull;
 
+                    <% if twit.likes.present? %>
+                            <%= link_to like_path(@liked, tweet: twit), method: :delete do %>
+                              <i class="fa fa-heartbeat text-danger"></i>
+                            <%end%>
+                    <% else %> 
+                        <%= link_to likes_path(tweet: twit), method: :post do%>
+                                <i class="fa fa-heart"></i>
+                        <%end%>
+                    <%end%>
+                    </p>
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
                       <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
@@ -53,28 +64,43 @@
 
       <%if  @following_tweet.present?%>
                 <% @following_tweet.each do |user|%>
-                      <% user.receiver.tweeets.each do  |e|%>
+                      <% user.receiver.tweeets.each do  |twit|%>
                         <div class="media border mt-3 pb-2">
                             <div class="p-3"></div>
                              <div class="media-body p-3">
-                             <%= link_to e.user,  class:'text-dark text-decoration-none' do%>
+                             <%= link_to twit.user,  class:'text-dark text-decoration-none' do%>
                                 <div class = 'd-flex pb-3'>
-                                      <%= image_tag("#{e.user.avatar}", class:'feed_image')%>
+                                      <%= image_tag("#{twit.user.avatar}", class:'feed_image')%>
                                     <div class="d-flex flex-column ml-3">
-                                          <strong class = '100'><%= e.user.try(:name)%></strong>
-                                          <small>@<%= e.user.try(:username)%></small>
+                                          <strong class = '100'><%= twit.user.try(:name)%></strong>
+                                          <small>@<%= twit.user.try(:username)%></small>
                                         
                                     </div>
                                   </div>
                               <%end%>
-                                    <%= link_to e, class:'text-dark text-decoration-none'  do%>
-                                       <span class= 'time_ago'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;<%= time_ago_in_words(e.created_at)%> ago</span><br>
-                                           <%=e.tweet %> 
-                                            <div><%= image_tag("#{e.image}", class: 'tweet_image')%></div>
-                                      <% end %>
-                                    
+                                    <%= link_to twit, class:'text-dark text-decoration-none'  do%>
+                                       <span class= 'time_ago'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;<%= time_ago_in_words(twit.created_at)%> ago</span><br>
+                                           <p><%=twit.tweet %> </p>
+                                            <div><%= image_tag("#{twit.image}", class: 'tweet_image')%></div>
+                                      <% end %><br>
+                                          <div>
+                                            <%= twit.likes.count %> &bull;
+                                            <% if twit.likes.present? %>
+                                               <%= link_to like_path(@liked, tweet: twit), method: :delete do %>
+                                                 <i class="fa fa-heartbeat text-danger"></i>
+                                                <%end%>
+                                            <% else %> 
+                                                <%= link_to likes_path(tweet: twit), method: :post do%>
+                                                        <i class="fa fa-heart"></i>
+                                                <%end%>
+                                             <%end%>
+                                            
+                                          </div>
+                    
                               </div>
+                              
                           </div>
+                      
                       <%end%>
                      <%end%>
                 <%end%>
