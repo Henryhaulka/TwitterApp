@@ -29,7 +29,7 @@
                     <div>
                       <%= link_to twit,  class:'text-dark text-decoration-none' do%>
                                  <span class= 'time_ago ml-5'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(twit.created_at)%> ago</span></p>
-                                     <p class= 'pt-2'><%= twit.tweet %> 
+                                     <p><%= twit.tweet %> </p>
                                      <%= image_tag("#{twit.image}", class: 'tweet_image')%>
                       <% end %>
                     </div><br>
