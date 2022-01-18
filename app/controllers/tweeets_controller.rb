@@ -6,12 +6,8 @@ class TweeetsController < ApplicationController
   def index
     @tweeet = Tweeet.new
     @users = User.all
-   
     @users_tweet = current_user.tweeets.order(created_at: :desc)
     @following_tweet = Followership.where(sender_id: current_user.id).order(created_at: :desc)
-    @liked = Like.find_by(user_id: current_user.id)
-    # @follow = current_user.followings.find_by(receiver_id: e.id)
-
   end
 
   # GET /tweeets/1 or /tweeets/1.json
