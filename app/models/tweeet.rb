@@ -2,6 +2,8 @@ class Tweeet < ApplicationRecord
   belongs_to :user
   has_many :likes
   has_many :user_likers, through: :likes, source: :user
+  has_many :comments
+  has_many :users_commented, through: :comments, source: :user
   validates :tweet, presence: true, length: { minimum: 10 }
   has_attached_file :image, storage: :cloudinary,
                             path: ':id/:style/:filename',
