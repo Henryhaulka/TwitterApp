@@ -5,7 +5,7 @@ class TweeetsController < ApplicationController
   # GET /tweeets or /tweeets.json
   def index
     @tweeet = Tweeet.new
-    @users = User.all
+    @users = User.all.sample(10)
     @users_tweet = current_user.tweeets.order(created_at: :desc)
     @following_tweet = Followership.where(sender_id: current_user.id).order(created_at: :desc)
   end
