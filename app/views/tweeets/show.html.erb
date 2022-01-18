@@ -1,8 +1,25 @@
-<div class="mx-auto w-50 mt-4">
-   <div class= 'text-center'><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div>
+<div class="mx-auto w-50 mt-4 text-center">
+   <div ><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div>
     <p>
       <strong>Tweet:</strong>
       <%= @tweeet.tweet %>
+
+      
+    </p>
+
+    <p> <%= @tweeet.likes.count %> &bull;
+        <% if current_user.likes.find_by(tweeet_id: @tweeet).present? %>
+              <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete do %>
+                <i class="fa fa-heartbeat text-danger"></i>
+              <%end%>
+      <% else %> 
+            <%= link_to likes_path(tweet: @tweeet), method: :post do%>
+                    <i class="fa fa-heart"></i>
+            <%end%>
+      <%end%>
+    
+    
+    
     </p>
 
     <%= link_to 'Back', tweeets_path, class: 'text-decoration-none text-dark' %>
