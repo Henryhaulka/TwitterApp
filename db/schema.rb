@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_094421) do
+ActiveRecord::Schema.define(version: 2022_01_18_101459) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweeet_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweeet_id"], name: "index_comments_on_tweeet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "followerships", force: :cascade do |t|
     t.integer "sender_id"
@@ -59,6 +69,8 @@ ActiveRecord::Schema.define(version: 2022_01_14_094421) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "tweeets"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "tweeets"
   add_foreign_key "likes", "users"
 end
