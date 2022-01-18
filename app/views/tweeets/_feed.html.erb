@@ -8,9 +8,7 @@
       </div>
   <%end%>
 
-  <% if !user_signed_in?%>
-    
-    <%else%>
+  <%if user_signed_in?%>
      <% @users_tweet.each do |twit|%>
           <div class="  pt-3">
           <div class="media border">
@@ -34,16 +32,15 @@
                       <% end %>
                     </div><br>
                     <p> <%= twit.likes.count %> &bull;
-
-                    <% if twit.likes.present? %>
-                            <%= link_to like_path(@liked, tweet: twit), method: :delete do %>
-                              <i class="fa fa-heartbeat text-danger"></i>
-                            <%end%>
-                    <% else %> 
-                        <%= link_to likes_path(tweet: twit), method: :post do%>
-                                <i class="fa fa-heart"></i>
-                        <%end%>
-                    <%end%>
+                          <% if current_user.likes.find_by(tweeet_id: twit).present? %>
+                                  <%= link_to  like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete do %>
+                                    <i class="fa fa-heartbeat text-danger"></i>
+                                  <%end%>
+                          <% else %> 
+                              <%= link_to likes_path(tweet: twit), method: :post do%>
+                                      <i class="fa fa-heart"></i>
+                              <%end%>
+                          <%end%>
                     </p>
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
@@ -84,9 +81,11 @@
                                             <div><%= image_tag("#{twit.image}", class: 'tweet_image')%></div>
                                       <% end %><br>
                                           <div>
+                                          
                                             <%= twit.likes.count %> &bull;
-                                            <% if twit.likes.present? %>
-                                               <%= link_to like_path(@liked, tweet: twit), method: :delete do %>
+                                           
+                                            <% if current_user.likes.find_by(tweeet_id: twit) %>
+                                               <%= link_to like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete do %>
                                                  <i class="fa fa-heartbeat text-danger"></i>
                                                 <%end%>
                                             <% else %> 
