@@ -41,6 +41,12 @@
                                       <i class="fa fa-heart"></i>
                               <%end%>
                           <%end%>
+                      <%=link_to tweeet_path(twit), class:'text-dark text-decoration-none' do%>
+                         <span class = 'ml-4'>
+                           <%= twit.comments.count%> &bull; 
+                            <i class="fa fa-comment"></i>
+                         </span>
+                        <%end%>
                     </p>
               <% if twit.user == current_user %>
                     <%= link_to twit do%>
