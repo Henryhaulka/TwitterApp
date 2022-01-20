@@ -11,7 +11,11 @@ class TweeetsController < ApplicationController
   end
 
   # GET /tweeets/1 or /tweeets/1.json
-  def show; end
+  def show
+  tweet = Tweeet.find(params[:id])
+  @commenter = Comment.where(tweeet_id: tweet)
+  
+  end
 
   # GET /tweeets/new
   def new
