@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :tweeets
-  has_many :followings, class_name: "Followership", foreign_key: "sender_id"
-  has_many :followers, class_name: "Followership", foreign_key: "receiver_id"
-  has_many :likes
+  has_many :tweeets, dependent: :destroy
+  has_many :followings, class_name: "Followership", foreign_key: "sender_id", dependent: :destroy
+  has_many :followers, class_name: "Followership", foreign_key: "receiver_id", dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweeet
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :commented_tweets, through: :comments, source: :tweeet
   has_attached_file :avatar, storage: :cloudinary,
                             path: ':id/:style/:filename',
