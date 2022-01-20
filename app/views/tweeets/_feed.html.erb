@@ -33,7 +33,7 @@
                     </div><br>
                     <p> <%= twit.likes.count %> &bull;
                           <% if current_user.likes.find_by(tweeet_id: twit).present? %>
-                                  <%= link_to  like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete do %>
+                                  <%= link_to  like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete,  class: 'text-decoration-none' do %>
                                     <i class="fa fa-heartbeat text-danger"></i>
                                   <%end%>
                           <% else %> 
@@ -91,11 +91,11 @@
                                             <%= twit.likes.count %> &bull;
                                            
                                             <% if current_user.likes.find_by(tweeet_id: twit) %>
-                                               <%= link_to like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete do %>
+                                               <%= link_to like_path(current_user.likes.find_by(tweeet_id: twit),tweet: twit), method: :delete, class: 'text-decoration-none' do %>
                                                  <i class="fa fa-heartbeat text-danger"></i>
                                                 <%end%>
                                             <% else %> 
-                                                <%= link_to likes_path(tweet: twit), method: :post do%>
+                                                <%= link_to likes_path(tweet: twit), method: :post,  class: 'text-decoration-none' do%>
                                                         <i class="fa fa-heart"></i>
                                                 <%end%>
                                              <%end%>

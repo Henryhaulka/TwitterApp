@@ -6,11 +6,11 @@
    <div ><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div><br>
     <p class = 'text-left'> <%= @tweeet.likes.count %> &bull;
         <% if current_user.likes.find_by(tweeet_id: @tweeet).present? %>
-              <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete do %>
+              <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete,  class: 'text-decoration-none' do %>
                 <i class="fa fa-heartbeat text-danger "></i>
               <%end%>
       <% else %> 
-            <%= link_to likes_path(tweet: @tweeet), method: :post do%>
+            <%= link_to likes_path(tweet: @tweeet), method: :post,  class: 'text-decoration-none' do%>
                     <i class="fa fa-heart"></i>
             <%end%>
       <%end%>

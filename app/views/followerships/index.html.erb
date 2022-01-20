@@ -1,5 +1,5 @@
  <% if  @followers.present?%>
-    <div class="mx-auto w-25 text-center mt-3 ">
+    <div class="mx-auto contain text-center mt-3 ">
     <h3><%=current_user.name%>'s Followers</h3><br>
     <div class="card" >
       <div class="card-header p-4">
@@ -23,7 +23,7 @@
 <%end%>
 
 <% if  @followings.present?%>
-    <div class="mx-auto w-25 text-center mt-3 mb-5">
+    <div class="mx-auto contain text-center mt-3 mb-5">
     <h3><%=current_user.name%>'s Followings</h3><br>
       <div class="card" >
       <div class="card-header p-4">

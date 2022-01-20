@@ -78,7 +78,12 @@
 
   .show_image {
       width: 90%;
-    }  
+  }
+  
+  .grid-system {
+    grid-template-columns: 1fr;
+    margin: auto;
+  }
 }
 
   
