@@ -31,9 +31,12 @@
             </br>
          <strong><%= current_user.followers.count%></strong> 
         </div>
-          
+         
         </li>
-
+        
       </ul>
+      
+    
     </div>
+     <p class = 'who_link  mt-2'><%=link_to 'WHO TO FOLLOW?',users_path, class: 'text-success text-decoration-none' %></p>
     </div>
