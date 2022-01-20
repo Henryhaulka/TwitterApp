@@ -1,6 +1,5 @@
 @import "font-awesome";
 
-
 .phona {
   img {
     width: 5em;
@@ -13,9 +12,12 @@
     width: 2rem;
 }
 
+.contain {
+  width: 50%;
+}
 .show_image {
-  width: 200px;
-  height: 200px;
+  width: 50%;
+  height: 20rem;
   border-radius: 1rem;
   margin: auto;
 }
@@ -47,3 +49,36 @@
   height: 300px;
   border-radius: 0.5rem;
 }
+
+.small {
+  font-size: x-small;
+}
+
+.comment {
+  padding-left: 5rem;
+  text-align: left;  
+}
+
+.grid-system {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.who_link{ 
+  font-size: x-small;
+}
+
+@media screen and (max-width: 768px) {
+    .contain {
+      width: 90%;
+    }
+
+  .show_image {
+      width: 90%;
+    }  
+}
+
+  
