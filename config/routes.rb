@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :likes, only: [:create, :destroy, :index]
   resources :followerships, only: [:create, :destroy, :index]
   devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :tweeets
+  resources :tweeets do
+    resources :comments
+  end
   resources :users
    
   root 'tweeets#index'
