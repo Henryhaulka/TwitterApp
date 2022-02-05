@@ -12,9 +12,8 @@ class TweeetsController < ApplicationController
 
   # GET /tweeets/1 or /tweeets/1.json
   def show
-  tweet = Tweeet.find(params[:id])
-  @commenter = Comment.where(tweeet_id: tweet)
-  
+      tweet = Tweeet.find(params[:id])
+      @commenter = Comment.where(tweeet_id: tweet).order(created_at: :desc)
   end
 
   # GET /tweeets/new
@@ -68,7 +67,6 @@ class TweeetsController < ApplicationController
   end
 
   private
-
   # Use callbacks to share common setup or constraints between actions.
   def set_tweeet
     @tweeet = Tweeet.find(params[:id])
