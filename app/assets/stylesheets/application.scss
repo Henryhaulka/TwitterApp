@@ -19,7 +19,7 @@
   width: 50%;
   height: 20rem;
   border-radius: 1rem;
-  margin: auto;
+  display: block;
 }
 
 .list_image {
@@ -55,7 +55,7 @@
 }
 
 .comment {
-  padding-left: 5rem;
+  padding: 1rem;
   text-align: left;  
 }
 

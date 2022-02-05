@@ -3,7 +3,7 @@
       <%= @tweeet.tweet %>
       
     </p>
-   <div ><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div><br>
+   <div><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div><br>
     <p class = 'text-left'> <%= @tweeet.likes.count %> &bull;
         <% if current_user.likes.find_by(tweeet_id: @tweeet).present? %>
               <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete,  class: 'text-decoration-none' do %>
@@ -27,21 +27,27 @@
        </div>
        <% @commenter.each do |comment| %>
        <%= link_to user_path(comment.user), class: 'text-decoration-none text-dark' do%>
-           <div class = 'd-flex' >
-           
-              <div>
-                 <%= image_tag("#{comment.user.avatar}", class: 'feed_image')%>
-              </div>
-             <p class = 'ml-3 mt-2 small'>
-               <%= comment.user.name%>
-                <span class = ' font-weight-bold'>@<%= comment.user.username%></span>
-             </p>
-           
+           <div class = 'card  mb-2'>
+             <div class = 'd-flex card-header p-3' >
+             
+                <div>
+                   <%= image_tag("#{comment.user.avatar}", class: 'feed_image')%>
+                </div>
+               <p class = 'ml-3 mt-2 small'>
+                 <%= comment.user.name%>
+                  <span class = ' font-weight-bold'>@<%= comment.user.username%></span>
+               </p>
+             
+             </div>
+                       <%end%>
+             <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
+              
+              <% if comment.user == current_user %>
+                      <%= link_to tweeet_comment_path(current_user.comments.find_by(tweeet_id: @tweeet), twit: @tweeet), method: :delete, data: { confirm: 'Are you sure you want to delete this tweet?'} do %>
+                          <i class="fa fa-trash-o text-dark ml-3" aria-hidden="true"></i>
+                      <% end %>
+              <% end %>
            </div>
-          <%end%>
-           <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
-        
-    
     <% end %>
     <% end %>
     
