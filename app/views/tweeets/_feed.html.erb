@@ -37,7 +37,7 @@
                                     <i class="fa fa-heartbeat text-danger"></i>
                                   <%end%>
                           <% else %> 
-                              <%= link_to likes_path(tweet: twit), method: :post do%>
+                              <%= link_to likes_path(tweet: twit), class: 'text-decoration-none' , method: :post do%>
                                       <i class="fa fa-heart"></i>
                               <%end%>
                           <%end%>
