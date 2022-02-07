@@ -39,15 +39,25 @@
                </p>
              
              </div>
-                       <%end%>
+        <%end%>
              <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
               <% if SubComment.where(comment_id: comment).present?%>
-                 <div class = 'w-75 ml-auto p-2'>
+                 <div class = 'w-75 ml-auto p-1 text-left'>
+                    <h5><%= pluralize(SubComment.where(comment_id: comment).count, 'Reply')%></h5>
                       <%@sub_comments.each do |sub|%>
-                           <div class = 'border-top text-left'>
-                             <%= image_tag("#{sub.user.avatar}", class: 'sub-avatar')%>
-                             <%= sub.user.name%>
-                             <%= sub.body%>
+                           <div class = 'border-top '>
+                              <%= link_to sub.user, class: 'text-decoration-none text-dark' do %>
+                                <div class = 'd-flex card-header'>
+                                    <div>
+                                      <%= image_tag("#{sub.user.avatar}", class: 'sub-avatar')%>
+                                    </div>
+                                    <p class = 'ml-3 mt-2 small'>
+                                          <%= sub.user.name%>
+                                          <span class = ' font-weight-bold'>@<%= sub.user.username%></span>
+                                      </p> 
+                                </div>
+                              <%end%>
+                             <p class= 'ml-2 pt-2'><%= sub.body%><span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(sub.created_at)%> ago</span></p>
                            </div>
                       <%end%>
                  </div>
