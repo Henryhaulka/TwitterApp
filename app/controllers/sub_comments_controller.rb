@@ -1,0 +1,2 @@
+class SubCommentsController < ApplicationController
+end
