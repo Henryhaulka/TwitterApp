@@ -14,6 +14,8 @@ class TweeetsController < ApplicationController
   def show
       tweet = Tweeet.find(params[:id])
       @commenter = Comment.where(tweeet_id: tweet).order(created_at: :desc)
+      comment = Comment.find_by(tweeet_id: tweet)
+      @sub_comments = SubComment.where(comment_id: comment)
   end
 
   # GET /tweeets/new
