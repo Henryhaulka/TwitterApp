@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :followerships, only: [:create, :destroy, :index]
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :tweeets do
-    resources :comments do
-      resources :sub_comments
-    end
+    resources :comments 
+    resources :sub_comments
   end
   resources :users
    
