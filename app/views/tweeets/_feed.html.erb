@@ -41,7 +41,7 @@
                                       <i class="fa fa-heart"></i>
                               <%end%>
                           <%end%>
-                      <%=link_to tweeet_path(twit), class:'text-dark text-decoration-none' do%>
+                      <%= link_to tweeet_path(twit), class:'text-dark text-decoration-none' do%>
                          <span class = 'ml-4'>
                            <%= twit.comments.count%> &bull; 
                             <i class="fa fa-comment"></i>
@@ -52,7 +52,6 @@
                     <%= link_to twit do%>
                       <i class="fa fa-link mr-3 text-dark" aria-hidden="true"></i>
                       <% end %>
-                      <i class="fas fa-table-tennis"></i>
                       <%= link_to edit_tweeet_path(twit) do %>
                       <i class="fa fa-pencil-square-o text-dark" aria-hidden="true"></i>
                       <% end %>
@@ -99,6 +98,12 @@
                                                         <i class="fa fa-heart"></i>
                                                 <%end%>
                                              <%end%>
+                                              <%= link_to tweeet_path(twit), class:'text-dark text-decoration-none' do%>
+                                                    <span class = 'ml-4'>
+                                                      <%= twit.comments.count%> &bull; 
+                                                        <i class="fa fa-comment"></i>
+                                                    </span>
+                                              <%end%>
                                             
                                           </div>
                     

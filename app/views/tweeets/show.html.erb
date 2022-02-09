@@ -9,18 +9,22 @@
               <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete,  class: 'text-decoration-none' do %>
                 <i class="fa fa-heartbeat text-danger "></i>
               <%end%>
-      <% else %> 
+        <% else %> 
             <%= link_to likes_path(tweet_id: @tweeet), method: :post,  class: 'text-decoration-none' do%>
                     <i class="fa fa-heart"></i>
             <%end%>
       <%end%>
-                       <span class = 'ml-4'>
-                           <%= @tweeet.comments.count%> &bull; 
-                            <i class="fa fa-comment"></i>
-                         </span>
-    
+      <span class = 'ml-4'>
+          <%= @tweeet.comments.count%> &bull; 
+          <i class="fa fa-comment"></i>
+      </span>
+
     </p>
-      <div><%= render 'comments/form'%></div>
+     <% unless current_user.comments.where(tweeet_id: @tweeet).present?%>
+      <div>
+          <%= render 'comments/form'%>
+      </div>
+       <% end %>
     <% if @commenter.present? %>
        <div class = 'mt-2 mb-4'>
          <h2 class = 'display-4 text-left'>Comments</h2>
@@ -42,7 +46,10 @@
         <%end%>
              <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
                 <div class = 'w-75 ml-auto p-1 text-left'>
-                  <%= render 'sub_comments/form', commented_twit: comment%>
+               
+                    <%= render 'sub_comments/form', commented_twit: comment%>
+               
+                 
                 </div>
               <% if SubComment.where(comment_id: comment).present?%>
                  <details class = 'w-75 ml-auto p-1 text-left'>
@@ -65,6 +72,7 @@
                                   </div>
                                 <%end%>
                                <p class= 'ml-2 pt-2'><%= sub.body%><span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(sub.created_at)%> ago</span></p>
+                          
                              </div>
                         <%end%>
                    
@@ -86,6 +94,4 @@
           <%= link_to 'Delete', @tweeet, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
         <% end %>
     </div>
-
-    
 </div>
