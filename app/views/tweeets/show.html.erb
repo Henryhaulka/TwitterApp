@@ -4,13 +4,19 @@
       
     </p>
    <div><%=image_tag("#{@tweeet.image}",class: 'show_image') %></div><br>
-    <p class = 'text-left'> <%= @tweeet.likes.count %> &bull;
+    <p class = 'text-left'> 
+        <% if @tweeet.likes.count.zero? %> 
+        <% else %>
+          <%= @tweeet.likes.count %> &bull;
+        <% end %>
+        
+    
         <% if current_user.likes.find_by(tweeet_id: @tweeet).present? %>
               <%= link_to  like_path(current_user.likes.find_by(tweeet_id: @tweeet),tweet: @tweeet), method: :delete,  class: 'text-decoration-none' do %>
                 <i class="fa fa-heartbeat text-danger "></i>
               <%end%>
         <% else %> 
-            <%= link_to likes_path(tweet_id: @tweeet), method: :post,  class: 'text-decoration-none' do%>
+            <%= link_to likes_path(tweet_id: @tweeet,  tweet: @tweeet), method: :post,  class: 'text-decoration-none' do%>
                     <i class="fa fa-heart"></i>
             <%end%>
       <%end%>
@@ -44,17 +50,25 @@
              
              </div>
         <%end%>
-             <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
-                <div><%if Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet).present?%>
-                        <%= link_to  tweeet_thumb_path(Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet) method: :delete) do%>  
-                          <i class="fa fa-thumbs-up  text-success"></i>
+             <div class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></div>
+                
+                <div class = 'text-left ml-4 mb-2'>
+               
+                
+                <%if Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet).present?%>
+                        <%= link_to  tweeet_thumb_path(current_user.thumbs.find_by(tweeet_id: @tweeet), com: comment, tweet: @tweeet), method: :delete do%>  
+                          <i class="fa fa-thumbs-up fa-1x  text-success"></i>
                           <% end %>
                          <%else%> 
                          <%= link_to tweeet_thumbs_path(@tweeet, com: comment, tweet: @tweeet), method: :post  do%>  
-                             <i class="fa fa-thumbs-up text-warning"></i>
+                             <i class="fa fa-thumbs-up fa-1x text-warning"></i>
                           <% end %>
                         
-                        <%end%>  
+                <%end%>  
+                     <% if comment.thumbs.count.zero? %>
+                     <%else%>
+                       <%= comment.thumbs.count%>
+                     <% end %>
                 </div>
                 <div class = 'w-75 ml-auto p-1 text-left'>
                     <%= render 'sub_comments/form', commented_twit: comment%>

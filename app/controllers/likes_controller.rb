@@ -3,7 +3,8 @@ class LikesController < ApplicationController
         tweetted = params[:tweet]
         liking = current_user.likes.build(tweeet_id: tweetted)
         liking.save
-        redirect_to root_path, notice: 'successfully liked a tweet'
+        tweet = Tweeet.find(params[:tweet])
+        redirect_to tweeet_path(tweet), notice: 'successfully liked a tweet'
     end
 
     def destroy

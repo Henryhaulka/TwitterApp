@@ -8,7 +8,12 @@ class ThumbsController < ApplicationController
     end
 
     def destroy
-        thumb = current_user.thumbs.find_by()
+        tweet = params[:tweet]
+        comment = params[:com]
+        thumb = current_user.thumbs.find_by(comment_id: comment, tweeet_id: tweet)
+        thumb.destroy
+         twit = Tweeet.find(params[:tweet])
+        redirect_to tweeet_path(twit), alert: 'like cancelled' 
     end
     
 
