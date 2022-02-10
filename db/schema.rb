@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_155347) do
+ActiveRecord::Schema.define(version: 2022_02_10_082516) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_155347) do
     t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tweeet_id"
     t.index ["comment_id"], name: "index_thumbs_on_comment_id"
     t.index ["user_id"], name: "index_thumbs_on_user_id"
   end

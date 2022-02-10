@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :tweeets do
     resources :comments 
+     resources :thumbs
     resources :sub_comments
-    resources :thumbs
+   
   end
   resources :users
    
