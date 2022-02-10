@@ -9,7 +9,7 @@ class FollowershipsController < ApplicationController
         follow = current_user.followings.build(receiver_id: user)
         follow.save
         @user = User.find(user)
-        redirect_to root_path, notice: "You are now following #{@user.name}"
+        redirect_to user_path(@user), notice: "You are now following #{@user.name}"
     end
     
     def destroy
