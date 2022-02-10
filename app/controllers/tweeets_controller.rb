@@ -15,6 +15,7 @@ class TweeetsController < ApplicationController
       tweet = Tweeet.find(params[:id])
       @commenter = Comment.where(tweeet_id: tweet).order(created_at: :desc)
       comment = Comment.find_by(tweeet_id: tweet)
+      @thumb = current_user.thumbs.find_by(comment_id: comment)
   end
 
   # GET /tweeets/new

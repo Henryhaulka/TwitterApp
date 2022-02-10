@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_213536) do
+ActiveRecord::Schema.define(version: 2022_02_09_155347) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2022_02_05_213536) do
     t.text "body"
     t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
     t.index ["user_id"], name: "index_sub_comments_on_user_id"
+  end
+
+  create_table "thumbs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_thumbs_on_comment_id"
+    t.index ["user_id"], name: "index_thumbs_on_user_id"
   end
 
   create_table "tweeets", force: :cascade do |t|
@@ -85,4 +94,6 @@ ActiveRecord::Schema.define(version: 2022_02_05_213536) do
   add_foreign_key "likes", "users"
   add_foreign_key "sub_comments", "comments"
   add_foreign_key "sub_comments", "users"
+  add_foreign_key "thumbs", "comments"
+  add_foreign_key "thumbs", "users"
 end

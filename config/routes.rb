@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
+  
   resources :likes, only: [:create, :destroy, :index]
   resources :followerships, only: [:create, :destroy, :index]
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :tweeets do
     resources :comments 
     resources :sub_comments
+    resources :thumbs
   end
   resources :users
    

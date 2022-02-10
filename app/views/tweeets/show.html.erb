@@ -45,6 +45,17 @@
              </div>
         <%end%>
              <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
+                <div><%if @thumb.present?%>
+                        <%= link_to   do%>  
+                          <i class="fa fa-thumbs-up  text-success"></i>
+                          <% end %>
+                         <%else%> 
+                         <%= link_to tweeet_thumbs_path  do%>  
+                             <i class="fa fa-thumbs-up text-warning"></i>
+                          <% end %>
+                        
+                        <%end%>  
+                </div>
                 <div class = 'w-75 ml-auto p-1 text-left'>
                     <%= render 'sub_comments/form', commented_twit: comment%>
                 </div>
