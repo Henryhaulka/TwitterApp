@@ -52,22 +52,35 @@
         <%end%>
              <div class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></div>
                 
-                <div class = 'text-left ml-4 mb-2'>
+                <div class = 'text-left ml-4 mb-2' >
                
                 
                 <%if Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet).present?%>
-                        <%= link_to  tweeet_thumb_path(current_user.thumbs.find_by(tweeet_id: @tweeet), com: comment, tweet: @tweeet), method: :delete do%>  
+                        <%= link_to  tweeet_thumb_path(current_user.thumbs.find_by(tweeet_id: @tweeet), com: comment, tweet: @tweeet), method: :delete,  class: 'text-decoration-none'  do%>  
                           <i class="fa fa-thumbs-up fa-1x  text-success"></i>
                           <% end %>
                          <%else%> 
-                         <%= link_to tweeet_thumbs_path(@tweeet, com: comment, tweet: @tweeet), method: :post  do%>  
+                         <%= link_to tweeet_thumbs_path(@tweeet, com: comment, tweet: @tweeet),class: 'text-decoration-none',  method: :post  do%>  
                              <i class="fa fa-thumbs-up fa-1x text-warning"></i>
                           <% end %>
-                        
                 <%end%>  
                      <% if comment.thumbs.count.zero? %>
                      <%else%>
                        <%= comment.thumbs.count%>
+                     <% end %> &nbsp;  &nbsp; 
+                  <%if Unthumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet).present?%>
+                        <%= link_to  tweeet_unthumb_path(current_user.unthumbs.find_by(tweeet_id: @tweeet), com: comment, tweet: @tweeet), method: :delete do%>  
+                          <i class="fa fa-thumbs-down fa-1x  text-success"></i>
+                        
+                          <% end %>
+                         <%else%> 
+                         <%= link_to tweeet_unthumbs_path(@tweeet, com: comment, tweet: @tweeet), method: :post  do%>  
+                             <i class="fa fa-thumbs-down fa-1x text-warning"></i>
+                          <% end %>
+                <%end%>  
+                <% if comment.unthumbs.count.zero? %>
+                     <%else%>
+                       <%= comment.unthumbs.count%>
                      <% end %>
                 </div>
                 <div class = 'w-75 ml-auto p-1 text-left'>
