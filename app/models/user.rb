@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :sub_comments, dependent: :destroy
   has_many :comment_subs, through: :sub_comments, source: :comment
   has_many :thumbs,  dependent: :destroy
+  has_many :unthumbs, dependent: :destroy
   has_attached_file :avatar, storage: :cloudinary,
                             path: ':id/:style/:filename',
                             styles: { medium: '300x300>' },

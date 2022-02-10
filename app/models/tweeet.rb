@@ -4,6 +4,7 @@ class Tweeet < ApplicationRecord
   has_many :user_likers, through: :likes, source: :user
   has_many :comments, dependent: :destroy
   has_many :thumbs, class_name: 'Thumb', foreign_key: 'tweeet_id' , dependent: :destroy
+  has_many :unthumbs, dependent: :destroy
   has_many :users_commented, through: :comments, source: :user
   validates :tweet, presence: true, length: { minimum: 10 }
   has_attached_file :image, storage: :cloudinary,
