@@ -1,0 +1,2 @@
+class UnthumbsController < ApplicationController
+end
