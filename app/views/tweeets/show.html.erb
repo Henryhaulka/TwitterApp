@@ -45,12 +45,12 @@
              </div>
         <%end%>
              <p class = 'comment'><%= comment.body%>  <span class= 'time_ago ml-1'><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; <%= time_ago_in_words(comment.created_at)%> ago</span></p>
-                <div><%if @thumb.present?%>
-                        <%= link_to   do%>  
+                <div><%if Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet).present?%>
+                        <%= link_to  tweeet_thumb_path(Thumb.find_by(user_id: current_user, comment_id: comment, tweeet_id: @tweeet) method: :delete) do%>  
                           <i class="fa fa-thumbs-up  text-success"></i>
                           <% end %>
                          <%else%> 
-                         <%= link_to tweeet_thumbs_path  do%>  
+                         <%= link_to tweeet_thumbs_path(@tweeet, com: comment, tweet: @tweeet), method: :post  do%>  
                              <i class="fa fa-thumbs-up text-warning"></i>
                           <% end %>
                         
