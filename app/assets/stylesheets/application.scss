@@ -1,23 +1,95 @@
 @import "font-awesome";
 
-.media {
-  border-radius: 5px;
-
-  img {
-    border-radius: 50%;
-  }
-}
-
-.card {
-  img {
-    width: 50px;
-    border-radius: 50%;
-  }
-}
-
 .phona {
   img {
-    width: 80px;
-    border-radius: 50%;
+    width: 5em;
+    border-radius: 10%;
+  }
+}
+
+.profile_avatar {
+  height: 5rem;
+  width: 2rem;
+}
+
+.sub-avatar {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.contain {
+  width: 50%;
+}
+
+.show_image {
+  width: 50%;
+  height: 20rem;
+  border-radius: 1rem;
+  display: block;
+}
+
+.list_image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.feed_image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.who:not(:first-child),
+.bbm {
+  border-bottom: 0.5px solid grey;
+}
+
+.time_ago {
+  font-size: x-small;
+  color: grey;
+}
+
+.tweet_image {
+  width: 300px;
+  height: 300px;
+  border-radius: 0.5rem;
+}
+
+.small {
+  font-size: x-small;
+}
+
+.comment {
+  padding: 1rem;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.grid-system {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.who_link {
+  font-size: x-small;
+}
+
+@media screen and (max-width: 768px) {
+  .contain {
+    width: 90%;
+  }
+
+  .show_image {
+    width: 90%;
+  }
+
+  .grid-system {
+    grid-template-columns: 1fr;
+    margin: auto;
   }
 }

@@ -1,15 +1,20 @@
 class TweeetsController < ApplicationController
   before_action :set_tweeet, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :allow_access, only: %i[edit update destroy]
   # GET /tweeets or /tweeets.json
   def index
-    @tweeets = Tweeet.all
     @tweeet = Tweeet.new
+    @users = User.all.sample(10)
+    @users_tweet = current_user.tweeets.order(created_at: :desc)
+    @following_tweet = Followership.where(sender_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /tweeets/1 or /tweeets/1.json
-  def show; end
+  def show
+    tweet = Tweeet.find(params[:id])
+    @commenter = Comment.where(tweeet_id: tweet).order(created_at: :desc)
+  end
 
   # GET /tweeets/new
   def new
@@ -70,6 +75,6 @@ class TweeetsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tweeet_params
-    params.require(:tweeet).permit(:tweet)
+    params.require(:tweeet).permit(:tweet, :image)
   end
 end

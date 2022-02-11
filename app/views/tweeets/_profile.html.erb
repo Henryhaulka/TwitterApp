@@ -1,34 +1,42 @@
-<div class="col-md-3 mt-3">
-<div class="card" >
-  <h4 class="card-header">
-  <strong>Profile</strong>  
-  </h4>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item phona d-flex ">
-    <div>
-      <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
-      </div>
-      <div class=" ml-5 ">
-          <p class="pt-2"><strong ><%= current_user.name%></strong></p>
-          <p><%= current_user.username%></p>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-    <div>
-       Tweets<br>
-       <strong><%= current_user.tweeets.count %></strong>
-    </div>
-    <div>
-        Following</br>
-        <strong> 11k</strong> 
-     </div>
-    <div>
-        Followers</br>
-       <strong>1k</strong> 
-    </div>
-      
-    </li>
 
-  </ul>
-</div>
-</div>
+    <div class="col-md-3 mt-3">
+    <div class="card" >
+      <h4 class="card-header">
+      <strong>Profile</strong>  
+      </h4>
+      
+      <ul class="list-group list-group-flush">
+       <%= link_to current_user,  class:'text-dark text-decoration-none' do%>
+            <li class="list-group-item phona d-flex ">
+            <div>
+              <%= image_tag("#{current_user.avatar}", class:'profile_avatar') %>
+              </div>
+              <div class=" ml-5 ">
+                  <p class="pt-2"><strong ><%= current_user.name%></strong></p>
+                  <p ><%= current_user.username%></p>
+              </div>
+            </li>
+        <%end%>
+        <li class="list-group-item d-flex justify-content-between">
+        <div>
+          Tweets<br>
+          <strong><%= current_user.tweeets.count %></strong>
+        </div>
+        <div>
+           <%= link_to('Following', followerships_path, class: 'text-decoration-none text-dark')%></br>
+            <strong><%= current_user.followings.count%></strong> 
+        </div>
+        <div>
+        <%= link_to('Followers', followerships_path, class: 'text-decoration-none text-dark')%>
+            </br>
+         <strong><%= current_user.followers.count%></strong> 
+        </div>
+         
+        </li>
+        
+      </ul>
+      
+    
+    </div>
+     <p class = 'who_link  mt-2'><%=link_to 'WHO TO FOLLOW?',users_path, class: 'text-success text-decoration-none' %></p>
+    </div>

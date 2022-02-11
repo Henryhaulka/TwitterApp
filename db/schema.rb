@@ -10,13 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_154319) do
+ActiveRecord::Schema.define(version: 2022_02_10_145316) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweeet_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweeet_id"], name: "index_comments_on_tweeet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "followerships", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweeet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweeet_id"], name: "index_likes_on_tweeet_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "sub_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
+    t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
+    t.index ["user_id"], name: "index_sub_comments_on_user_id"
+  end
+
+  create_table "thumbs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "tweeet_id"
+    t.index ["comment_id"], name: "index_thumbs_on_comment_id"
+    t.index ["user_id"], name: "index_thumbs_on_user_id"
+  end
 
   create_table "tweeets", force: :cascade do |t|
     t.text "tweet"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "image"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "unthumbs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweeet_id", null: false
+    t.integer "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_unthumbs_on_comment_id"
+    t.index ["tweeet_id"], name: "index_unthumbs_on_tweeet_id"
+    t.index ["user_id"], name: "index_unthumbs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,9 +91,24 @@ ActiveRecord::Schema.define(version: 2021_06_30_154319) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "username"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "tweeets"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "tweeets"
+  add_foreign_key "likes", "users"
+  add_foreign_key "sub_comments", "comments"
+  add_foreign_key "sub_comments", "users"
+  add_foreign_key "thumbs", "comments"
+  add_foreign_key "thumbs", "users"
+  add_foreign_key "unthumbs", "comments"
+  add_foreign_key "unthumbs", "tweeets"
+  add_foreign_key "unthumbs", "users"
 end
