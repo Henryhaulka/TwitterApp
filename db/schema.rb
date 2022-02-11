@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2022_02_10_145316) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "tweeet_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "tweeet_id", null: false
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_145316) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "tweeet_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "tweeet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tweeet_id"], name: "index_likes_on_tweeet_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_145316) do
   end
 
   create_table "sub_comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "body"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_145316) do
   end
 
   create_table "thumbs", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tweeet_id"
@@ -71,9 +74,9 @@ ActiveRecord::Schema.define(version: 2022_02_10_145316) do
   end
 
   create_table "unthumbs", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "tweeet_id", null: false
-    t.integer "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "tweeet_id", null: false
+    t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_unthumbs_on_comment_id"
