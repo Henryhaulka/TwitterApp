@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <%=  link_to 'Twittter',  root_path, class: "navbar-brand text-white font-weight-bold" %>
+  <button class="navbar-toggler" type="button " data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto mt-2">
+    <% if user_signed_in? %>
+      <li class="nav-item mr-5">
+       <i class= "text-white"> Welcome <%= current_user.username  %></i>
+      </li>
+      <% end %>
+      <li class="nav-item active">
+        <%= link_to 'New Tweet', root_path, class: " btn btn-light text-info p-1 mb-1" %>
+      </li>
+      
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: " btn btn-danger ml-md-2 mr-md-2 p-1 mb-1" %>
+      </li>
+      <li class="nav-item ">
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: " btn text-white p-1 mb-1 mr-2" %>
+      </li>
+      <% else %>
+       <li class="nav-item ">
+        <%= link_to 'Sign in',new_user_session_path, class: " btn text-white p-1 mb-1 mr-2 ml-2" %>
+      </li>
+      <li class="nav-item ">
+        <%= link_to 'Sign Up',  new_user_registration_path, class: " btn text-white p-1 mb-1 mr-2" %>
+      </li>
+      <% end %>
+     
+
+      
+    </ul>
+    <form class="form-inline  my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
