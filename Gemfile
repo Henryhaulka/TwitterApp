@@ -31,12 +31,10 @@ gem 'paperclip', '~> 6.0.0'
 gem 'paperclip-cloudinary'
 gem 'simple_form', '~> 5.1'
 
-group :development, :test do
-  gem 'sqlite3', '~> 1.4'
-end
+
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 1.3', '>= 1.3.1'
 end
 
 group :development, :test do
@@ -54,6 +52,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'hirb', '~> 0.7.3'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :test do
