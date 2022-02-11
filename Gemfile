@@ -40,8 +40,8 @@ group :production do
 end
 
 group :development, :test do
-  gem "database_cleaner"
-  gem "rspec-rails"
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -51,9 +51,9 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'guard-bundler'
-  gem 'rack-mini-profiler', '~> 2.0'
-  gem 'hirb', '~> 0.7.3'
   gem 'guard-livereload', '~> 2.5', require: false
+  gem 'hirb', '~> 0.7.3'
+  gem 'rack-mini-profiler', '~> 2.0'
 end
 
 group :test do
@@ -61,8 +61,8 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
