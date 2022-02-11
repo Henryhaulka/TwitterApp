@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
         tweet = Tweeet.find(params[:tweeet_id])
         commenting = tweet.comments.build(comment_params)
         commenting.user = current_user
-        commenting.save
-        redirect_to tweeet_path(tweet), notice: 'successfully commented'
+        redirect_to tweeet_path(tweet), notice: 'successfully commented' if  commenting.save
     end
 
     
