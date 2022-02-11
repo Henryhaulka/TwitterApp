@@ -8,8 +8,8 @@
 }
 
 .profile_avatar {
-    height: 5rem;
-    width: 2rem;
+  height: 5rem;
+  width: 2rem;
 }
 
 .sub-avatar {
@@ -21,6 +21,7 @@
 .contain {
   width: 50%;
 }
+
 .show_image {
   width: 50%;
   height: 20rem;
@@ -47,7 +48,7 @@
 
 .time_ago {
   font-size: x-small;
-  color: grey
+  color: grey;
 }
 
 .tweet_image {
@@ -63,7 +64,7 @@
 .comment {
   padding: 1rem;
   padding-bottom: 0;
-  text-align: left;  
+  text-align: left;
 }
 
 .grid-system {
@@ -74,17 +75,17 @@
   padding: 1rem;
 }
 
-.who_link{ 
+.who_link { 
   font-size: x-small;
 }
 
 @media screen and (max-width: 768px) {
-    .contain {
-      width: 90%;
-    }
+  .contain {
+    width: 90%;
+  }
 
   .show_image {
-      width: 90%;
+    width: 90%;
   }
   
   .grid-system {
@@ -92,5 +93,3 @@
     margin: auto;
   }
 }
-
-  
