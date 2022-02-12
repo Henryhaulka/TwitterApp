@@ -13,8 +13,8 @@ This project is a Twitter clone app which was a project built for my learning. T
 - Users can thumbs up a comment associated to a Tweet
 - Users can unthumbs up a comment associated to a Tweet
 
-![screenshot](img/cinema1.png)
-![screenshot](img/cinema2.png)
+![screenshot](Twitter.png)
+![screenshot](Twitter2.png)
 
 
 
