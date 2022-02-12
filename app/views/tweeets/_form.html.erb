@@ -1,0 +1,28 @@
+<%= simple_form_for(@tweeet) do |form| %>
+  <% if @tweeet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tweeet.errors.count, "error") %> prohibited this tweeet from being saved:</h2>
+
+      <ul>
+        <% tweeet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="p-3">
+  <div class="field form-group">
+    <%= form.label :tweet %>
+    <%= form.text_area :tweet, class: 'form-control', placeholder: 'Compose a Tweet', rows:8, autofocus: true %>
+  </div>
+
+    <div>
+      <%= form.label :image ,'Add image to Tweet *for better description*' %>
+      <%= form.file_field :image, as: :file , class:"form-control"%>
+  </div><br>
+
+  <div class="actions ">
+    <%= form.submit class: "btn btn-primary"  %>
+  </div>
+   </div>
+<% end %>
