@@ -72,9 +72,7 @@ GEM
     bootsnap (1.10.3)
       msgpack (~> 1.2)
     builder (3.2.4)
-
-    capybara (3.35.3)
-
+    capybara (3.36.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -83,16 +81,12 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-<<<<<<< HEAD
     childprocess (4.1.0)
-=======
-    childprocess (3.0.0)
     climate_control (0.2.0)
     cloudinary (1.21.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
     coderay (1.1.3)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     database_cleaner (2.0.1)
@@ -101,7 +95,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    devise (4.8.0)
+    devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -110,32 +104,24 @@ GEM
     diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    em-websocket (0.5.2)
+    em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
+      http_parser.rb (~> 0)
     erubi (1.10.0)
-<<<<<<< HEAD
+    eventmachine (1.2.7)
     ffi (1.15.5)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
+    formatador (1.1.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    i18n (1.9.1)
-=======
-    eventmachine (1.2.7)
-    eventmachine (1.2.7-x64-mingw32)
-    ffi (1.15.1)
-    ffi (1.15.1-x64-mingw32)
-    font-awesome-rails (4.7.0.7)
-      railties (>= 3.2, < 7)
-    formatador (0.2.5)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
-    guard (2.17.0)
+    guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (>= 1.0.12, < 2.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
-      pry (>= 0.9.12)
+      pry (>= 0.13.0)
       shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-bundler (3.0.0)
@@ -152,21 +138,16 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
-    http_parser.rb (0.6.0)
-    i18n (1.8.10)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
+    http_parser.rb (0.8.0)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-<<<<<<< HEAD
-    loofah (2.14.0)
-=======
-    listen (3.5.1)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.10.0)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
+    loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
@@ -175,30 +156,20 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
-<<<<<<< HEAD
-    mini_mime (1.1.2)
-    minitest (5.15.0)
-    msgpack (1.4.4)
-    nio4r (2.5.8)
-    nokogiri (1.13.1-x86_64-linux)
-=======
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.1115)
+    mime-types-data (3.2022.0105)
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
-    mini_mime (1.0.3)
-    minitest (5.14.4)
-    msgpack (1.4.2)
+    mini_mime (1.1.2)
+    minitest (5.15.0)
+    msgpack (1.4.4)
     multi_json (1.15.0)
     nenv (0.3.0)
     netrc (0.11.0)
-    nio4r (2.5.7)
-    nokogiri (1.11.7-x64-mingw32)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
-      racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
+    nio4r (2.5.8)
+    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -253,20 +224,11 @@ GEM
       method_source
       rake (>= 0.13)
       thor (~> 1.0)
-<<<<<<< HEAD
     rake (13.0.6)
-    regexp_parser (2.2.1)
-    rexml (3.2.5)
-    rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-=======
-    rake (13.0.3)
-    rb-fsevent (0.11.0)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (2.1.1)
+    regexp_parser (2.2.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -275,12 +237,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rest-client (2.1.0-x64-mingw32)
-      ffi (~> 1.9)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
+    rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -298,13 +255,10 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
-    rubyzip (2.3.0)
+    rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc (2.4.0-x64-mingw32)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -330,33 +284,22 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-<<<<<<< HEAD
-    thor (1.2.1)
-=======
     sqlite3 (1.4.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.1.0)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
+    thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-<<<<<<< HEAD
-    web-console (4.2.0)
-=======
-    tzinfo-data (1.2021.5)
-      tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
-    unf_ext (0.0.8-x64-mingw32)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.1.0)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
+    web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -378,10 +321,6 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-<<<<<<< HEAD
-=======
-  x64-mingw32
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
   x86_64-linux
 
 DEPENDENCIES
@@ -404,12 +343,9 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
-<<<<<<< HEAD
-=======
   shoulda-matchers (~> 4.0)
   simple_form (~> 5.1)
   sqlite3 (~> 1.4)
->>>>>>> bc560f1f5b13423f3d4484a9075dc54287432d91
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
