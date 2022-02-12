@@ -31,11 +31,7 @@ gem 'paperclip', '~> 6.0.0'
 gem 'paperclip-cloudinary'
 gem 'simple_form', '~> 5.1'
 
-
-
-
-  gem 'pg', '~> 1.3', '>= 1.3.1'
-
+gem 'pg', '~> 1.3', '>= 1.3.1'
 
 group :development, :test do
   gem 'database_cleaner'
