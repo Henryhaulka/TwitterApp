@@ -3,13 +3,7 @@
      <p  class= "display-5"><strong>Name:</strong> <%= @user.name.capitalize%></p>
     <p> <strong>Username:</strong> <%= @user.username%></p>
     
-    <%if  current_user.followings.where(receiver_id: @user.id).present? %>
-       <%=link_to('Unfollow',followership_path(user: @user), method: :delete, data: { confirm: "Are you sure you want to unfollow #{@user.name}"}, class: 'btn btn-danger w-50' )%>
-    <%elsif current_user == @user%>
-       <div class='btn btn-success w-50'>Current User</div>
-    <%else%>
-        <%=link_to('Follow',followerships_path(user: @user), method: :post, class: 'btn btn-primary w-50' )%>
-    <%end%>
+     <%= user_format(@user)%>
     <div class= 'mt-4'>
          <strong>Followers:</strong> <%= @user.followers.count%> | <strong>Following:</strong> <%= @user.followings.count%>
     </div>

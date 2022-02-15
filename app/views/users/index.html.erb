@@ -14,10 +14,10 @@
                  <%end%>
                  <%if user_signed_in?%>
                     <% if  current_user.followings.find_by(receiver_id: user.id).present?%>
-                    <div class= 'mb-3'>
-                      <%=link_to('Following', user ,  class:'btn btn-success w-100')%>
+                      <div class= 'mb-3'>
+                        <%=link_to('Following', user ,  class:'btn btn-success w-100')%>
                       </div>
-                      <%elsif user == current_user%>
+                    <%elsif user == current_user%>
                         <div class= 'btn btn-success w-100'>Current_user</div>
                     <%else%>
                       <div class= 'mb-3'>
