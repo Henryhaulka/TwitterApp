@@ -56,7 +56,7 @@ class TweeetsController < ApplicationController
   def destroy
     @tweeet.destroy
     respond_to do |format|
-      format.html { redirect_to tweeets_url, notice: 'Tweeet was successfully destroyed.' }
+      format.html { redirect_to tweeets_url, alert: 'Tweeet was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
